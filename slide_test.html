@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-EN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=euc-kr"/>
+		<script language='javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+		<style text="text/css">
+			li a {display:inline-block;}
+			li a {display:block;}
+			body {
+				font-family: cursive;
+				font-size: 0.66em;  
+			}
+			p {line-height: 1.5em;}
+			ul#menu, ul#menu ul {
+				list-style-type:none;
+				margin: 0;
+				padding: 0;
+				width: 14.4em;
+			}
+			ul#menu a {
+				display: block;
+				text-decoration: none;
+			}
+			ul#menu li {
+				margin-top: 1px;
+			}
+			ul#menu li a {
+				background: blue;
+				color: #fff; 
+				padding: 0.5em;
+			}
+			ul#menu li a:hover {
+				background: green;
+			}
+			ul#menu li ul li a {
+				background: red;
+				color: #000;
+				padding-left: 20px;
+			}
+			ul#menu li ul li a:hover {
+				background: yellow;
+				border-left: 5px #ffffff solid;
+				padding-left: 15px;
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				$('.sheader+fieldset').hide();
+				$('.sheader').click(function(){
+					var checkElement = $(this).next();
+					if((checkElement.is('fieldset')) && (checkElement.is(':visible'))) {
+						$('.sheader+fieldset:visible').slideUp(300);
+						return false;
+					}
+					if((checkElement.is('fieldset')) && (!checkElement.is(':visible'))) {
+						$('.sheader+fieldsetl:visible').slideUp(300);
+						checkElement.slideDown(300);
+						return false;
+					}
+				});
+			});
+		</script>
+	</head>
+	<body leftmargin="0" topmargin="0" bgcolor=#5E5E5E>
+		<div style="width:160px;" id="div1">
+			<tr>
+				<td height="800" valign="top">
+					<ul id="menu" width="160px">
+						<li>
+							<a href="#">Menu1</a>
+							<ul>
+								<li><a href="#">submenu1</a></li>
+								<li><a href="#">submenu2</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Menu2</a>
+							<ul>
+								<li><a href="#">submenu3</a></li>
+								<li><a href="#">submenu4</a></li>
+							</ul>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</div>
+		
+<header class="sheader"><h1>사망자 정보</h1></header>
+<fieldset>
+	<section class="col col-10">
+		<label class="checkbox">
+			<input type="checkbox" name="" id="">
+			<i></i>무연고</label>
+	</section>
+
+	<section class="col col-md-6">
+		<label class="label">성명</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+
+	</section>
+	<section class="col col-md-6">
+		<label class="label">주민번호</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm"/>
+		</label>
+	</section>
+	<section class="col col-md-6">
+		<label class="label">사망장소</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+	</section>  
+	<section class="col col-md-6">
+		<label class="label">사인(병명)</label> 
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+	</section>
+	
+	<section class="col col-md-12">
+		<label class="label">사망일</label>
+		
+			<label class="input state-success col-md-6"> 
+			<input type="text" name="" placeholder="날짜입력" class="datepicker" data-dateformat='yy-mm-dd'>
+			</label>
+		
+		<div class="col col-md-6"><label class="checkbox">
+			<input type="checkbox" name="" id="">
+			<i></i>미상</label>
+		</div>
+		
+	</section> 
+	
+	<section class="col col-md-12">
+		<label class="label">주소</label>		 
+		<label class="input textarea state-success"><textarea class="col col-5" rows="2"></textarea>
+	</section>
+</fieldset>
+	</body>
+</html>
+

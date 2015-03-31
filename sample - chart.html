@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- head -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content=""> 
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<!-- css -->
+<link rel="shortcut icon" href="../admin/img/favicon/test_favicon.ico" type="image/x-icon">
+<link rel="icon" href="../admin/img/favicon/test_favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/smartadmin-production.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/smartadmin-skins.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/demo.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/user.css">
+<link rel="apple-touch-icon" href="../admin/img/splash/sptouch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../admin/img/splash/touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../admin/img/splash/touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../admin/img/splash/touch-icon-ipad-retina.png">
+<link rel="apple-touch-startup-image" href="../admin/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+<link rel="apple-touch-startup-image" href="../admin/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="../admin/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+<!--[if lt IE 9]>
+	<script src="../admin/js/ie/html5.js"></script>
+	<script src="../admin/js/ie/respond.min.js"></script>
+	<script src="../admin/js/ie/IE9.js"></script>
+<![endif]-->
+
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="../admin/js/plugin/pace/pace.min.js"></script>
+<script src="../admin/js/libs/jquery-2.0.2.min.js"></script>
+<script src="../admin/js/libs/jquery-ui-1.10.3.min.js"></script>
+<script src="../admin/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+<script src="../admin/js/bootstrap/bootstrap.min.js"></script>
+<script src="../admin/js/notification/SmartNotification.min.js"></script>
+<script src="../admin/js/smartwidgets/jarvis.widget.min.js"></script>
+<script src="../admin/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+<script src="../admin/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+<script src="../admin/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<script src="../admin/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<script src="../admin/js/plugin/select2/select2.min.js"></script>
+<script src="../admin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+<script src="../admin/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+<script src="../admin/js/plugin/fastclick/fastclick.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.cust.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.resize.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+<script src="../admin/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="../admin/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="../admin/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.orderBar.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.pie.min.js"></script>
+<script src="../admin/js/plugin/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script type="text/javascript">
+var Time = 0;
+/* chart colors default */
+var $chrt_border_color = "#efefef";
+var $chrt_grid_color = "#DDD"
+var $chrt_main = "#E24913";
+/* red       */
+var $chrt_second = "#6595b4";
+/* blue      */
+var $chrt_third = "#FF9F01";
+/* orange    */
+var $chrt_fourth = "#7e9d3a";
+/* green     */  
+var $chrt_fifth = "#BD362F";
+/* dark red  */
+var $chrt_mono = "#000";
+
+$(document).ready(function() {
+	
+	pageSetUp();
+	Timer();
+	
+	
+	if ($("#saleschart").length) {
+		var d = [[1396463600000, 0], [1396550000000, 0], [1396636400000, 0],[1396722800000, 77], [1396809200000, 3636], [1396895600000, 3575], [1396982000000, 2736], [1397068400000, 1086], [1397154800000, 676], [1397241200000, 1205], [1397327600000, 906], [1397414000000, 710], [1397500400000, 639], [1397586800000, 540], [1397673200000, 435], [1397759600000, 301], [1397846000000, 575], [1397932400000, 481], [1398018800000, 591], [1398105200000, 608], [1398191600000, 459], [1398278000000, 234], [1398364400000, 1352], [1398450800000, 686], [1398537200000, 279], [1398623600000, 449], [1398710000000, 468], [1398796400000, 392], [1398882800000, 282], [1398969200000, 208], [1399055600000, 229], [1399142000000, 177], [1399228400000, 374], [1399314800000, 436], [1399401200000, 404], [1399487600000, 253], [1399574000000, 218], [1399660400000, 476], [1399746800000, 462], [1399833200000, 500], [1399919600000, 700], [1400006000000, 750], [1400092400000, 600], [1400178800000, 500], [1400265200000, 900], [1400351600000, 930], [1400438000000, 1200], [1400524400000, 980], [1400610800000, 950], [1400697200000, 900], [1400783600000, 1000], [1400870000000, 1050], [1400956400000, 1150], [1401042800000, 1100], [1401129200000, 1200], [1401215600000, 1300], [1401302000000, 1700], [1401388400000, 1450], [1401474800000, 1500], [1401561200000, 546], [1401647600000, 614], [1401734000000, 954], [1401820400000, 1700], [1401906800000, 1800], [1401993200000, 1900], [1402079600000, 2000], [1402166000000, 2100], [1402252400000, 2200], [1402338800000, 2300], [1402425200000, 2400], [1402511600000, 2550], [1402598000000, 2600], [1402684400000, 2500], [1402770800000, 2700], [1402857200000, 2750], [1402943600000, 2800], [1403030000000, 3245], [1403116400000, 3345], [1403202800000, 3000], [1403289200000, 3200], [1403375600000, 3300], [1403462000000, 3400], [1403548400000, 3600], [1403634800000, 3700], [1403721200000, 3800], [1403807600000, 4000], [1403894000000, 4500]];
+		for (var i = 0; i < d.length; ++i)
+			d[i][0] += 60 * 60 * 1000;
+		function weekendAreas(axes) {
+			var markings = [];
+			var d = new Date(axes.xaxis.min);
+			// go to the first Saturday
+			d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 1) % 7))
+			d.setUTCSeconds(0);
+			d.setUTCMinutes(0);
+			d.setUTCHours(0);
+			var i = d.getTime();
+			do {
+				// when we don't set yaxis, the rectangle automatically
+				// extends to infinity upwards and downwards
+				markings.push({
+					xaxis : {
+						from : i,
+						to : i + 2 * 24 * 60 * 60 * 1000
+					}
+				});
+				i += 7 * 24 * 60 * 60 * 1000;
+			} while (i < axes.xaxis.max);
+
+			return markings;
+		}
+
+		var options = {
+			xaxis : {
+				mode : "time",
+				tickLength : 5
+			},
+			series : {
+				lines : {
+					show : true,
+					lineWidth : 2,
+					fill : true,
+					fillColor : {
+						colors : [{
+							opacity : 0.2
+						}, {
+							opacity : 0.15
+						}]
+					}
+				},
+				//points: { show: true },
+				shadowSize : 0
+			},
+			selection : {
+				mode : "x"
+			},
+			grid : {
+				hoverable : true,
+				clickable : true,
+				tickColor : $chrt_border_color,
+				borderWidth : 0,
+				borderColor : $chrt_border_color,
+			},
+			tooltip : true,
+			tooltipOpts : {
+				content : "<b>%x</b> 방문자 <span>%y</span>",
+				dateFormat : "%y-%0m-%0d",
+				defaultTheme : false
+			},
+			colors : [$chrt_second],
+
+		};
+
+		var plot = $.plot($("#saleschart"), [d], options);
+	};
+	if ($('#pie-chart2').length) {
+		var data_pie = [];
+		var series = 3;
+		data_pie[0] = {
+			label : "확정",
+			data : 8
+		}
+		data_pie[1] = {
+				label : "취소",
+				data : 5
+			}
+		data_pie[2] = {
+				label : "대기",
+				data : 3
+			}
+		$.plot($("#pie-chart2"), data_pie, {
+			series : {
+				pie : {
+					show : true,
+					innerRadius : 0.5,
+					radius : 1,
+					label : {
+						show : false,
+						radius : 2 / 3,
+						formatter : function(label, series) {
+							return '<div style="font-size:11px;text-align:center;padding:4px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+						},
+						threshold : 0.1
+					}
+				}
+			},
+			legend : {
+				show : true,
+				noColumns : 1, // number of colums in legend table
+				labelFormatter : null, // fn: string -> string
+				labelBoxBorderColor : "#000", // border color for the little label boxes
+				container : null, // container (as jQuery object) to put legend in, null means default on top of graph
+				position : "ne", // position of default legend container within plot
+				margin : [5, 10], // distance from grid edge to default legend container within plot
+				backgroundColor : "#efefef", // null means auto-detect
+				backgroundOpacity : 1 // set to 0 to avoid background
+			},
+			grid : {
+				hoverable : true,
+				clickable : true
+			},
+		});
+
+	}
+	
+	if ($('#pie-chart').length) {
+		var data_pie = [];
+		var series = 3;
+		data_pie[0] = {
+			label : "e하늘",
+			data : 10
+		}
+		data_pie[1] = {
+				label : "지인소개",
+				data : 2
+			}
+		data_pie[2] = {
+				label : "방문",
+				data : 7
+			}
+		$.plot($("#pie-chart"), data_pie, {
+			series : {
+				pie : {
+					show : true,
+					innerRadius : 0.5,
+					radius : 1,
+					label : {
+						show : false,
+						radius : 2 / 3,
+						formatter : function(label, series) {
+							return '<div style="font-size:11px;text-align:center;padding:4px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+						},
+						threshold : 0.1
+					}
+				}
+			},
+			legend : {
+				show : true,
+				noColumns : 1, // number of colums in legend table
+				labelFormatter : null, // fn: string -> string
+				labelBoxBorderColor : "#000", // border color for the little label boxes
+				container : null, // container (as jQuery object) to put legend in, null means default on top of graph
+				position : "ne", // position of default legend container within plot
+				margin : [5, 10], // distance from grid edge to default legend container within plot
+				backgroundColor : "#efefef", // null means auto-detect
+				backgroundOpacity : 1 // set to 0 to avoid background
+			},
+			grid : {
+				hoverable : true,
+				clickable : true
+			},
+		});
+
+	}
+
+	
+	
+	
+	if ($('#updating-chart').length) {
+		// For the demo we use generated data, but normally it would be coming from the server
+		var data = [], totalPoints = 200;
+		function getRandomData() {
+			if (data.length > 0)
+				data = data.slice(1);
+
+			// do a random walk
+			while (data.length < totalPoints) {
+				var prev = data.length > 0 ? data[data.length - 1] : 50;
+				var y = prev + Math.random() * 10 - 5;
+				if (y < 0)
+					y = 0;
+				if (y > 100)
+					y = 100;
+				data.push(y);
+			}
+
+			// zip the generated y values with the x values
+			var res = [];
+			for (var i = 0; i < data.length; ++i)
+				res.push([i, data[i]])
+			return res;
+		}
+
+		// setup control widget
+		var updateInterval = 1000;
+		$("#updating-chart").val(updateInterval).change(function() {
+			var v = $(this).val();
+			if (v && !isNaN(+v)) {
+				updateInterval = +v;
+				if (updateInterval < 1)
+					updateInterval = 1;
+				if (updateInterval > 2000)
+					updateInterval = 2000;
+				$(this).val("" + updateInterval);
+			}
+		});
+
+		// setup plot
+		var options = {
+			yaxis : {
+				min : 0,
+				max : 100
+			},
+			xaxis : {
+				min : 0,
+				max : 100
+			},
+			colors : [$chrt_mono],
+			series : {
+				lines : {
+					lineWidth : 1,
+					fill : true, 
+					fillColor : {
+						colors : [{
+							opacity : 0.4
+						}, {
+							opacity : 0
+						}]
+					},
+					steps : false
+
+				}
+			}
+		};
+		var plot = $.plot($("#updating-chart"), [getRandomData()], options);
+
+		function update() {
+			plot.setData([getRandomData()]);
+			// since the axes don't change, we don't need to call plot.setupGrid()
+			plot.draw();
+
+			setTimeout(update, updateInterval);
+		}
+
+		update();
+
+	}
+});
+function Timer() {
+	$("#clock").html(Time + "분 전&nbsp;&nbsp;");
+	Time++; 
+	setTimeout("Timer()", 60000);
+}
+function cf_loading(){ 
+	$(".Loading_Box").css("display","block"); 
+}  
+function cf_loading_out(){
+	$(".Loading_Box").fadeOut( "slow");
+}
+
+</script>
+</head>
+<div class="Loading_Box"> 
+	<div class="Loading_Bg"></div>  
+	<div class="Loading_MsgBox">  
+		<div class="MessageBoxMiddle"> 
+			<span class="MsgTitle">  
+				<br/><br/> 
+				<i class="fa fa-refresh txt-color-orangeDark fa-spin"></i> 
+				<span class="margin-l-20"></span>Loading...<span class="txt-color-orangeDark"><strong></strong></span>
+			</span>
+			<br/><br/>
+			<p class="pText">서버에서 데이터를 변경하고 있습니다. 적용 될 때 까지 잠시만 기다려주세요. (사양에 따라 다를 수 있으며, 최대 2~3분 이내에 완료 됩니다.) </p>
+		</div>
+	</div>
+</div> 
+<body class="desktop-detected menu-on-top pace-done smart-style-2">
+<header id="header">
+	<div id="logo-group">
+		<span id="logo" style="color:#FFF;"> 
+			<img src="../admin/img/logo-blue.png" alt="로고"> 
+		</span>
+	</div>
+	<div class="project-context hidden-xs">
+	</div>
+	<!-- 우측 아이콘 메뉴 정보 -->
+	<div class="pull-right">
+		<div id="hide-menu" class="btn-header pull-right">
+			<span> <a href="javascript:void(0);" data-action="toggleMenu" title="메뉴">
+			<i class="fa fa-reorder"></i></a> </span> 
+		</div>
+		<!-- 개인정보 메뉴  Top 메뉴 일때-->
+		<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+			<li class="">
+				<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
+					퀵 메뉴
+				</a>
+				<ul class="dropdown-menu pull-right">
+					<li>
+						<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>개</u>인정보</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i>  <u>전</u>체화면</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="javascript:void(0);" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout">
+							<i class="fa fa-sign-out fa-lg"></i> <u>로</u>그아웃
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<div id="logout" class="btn-header transparent pull-right">
+			<span> <a href="#" title="로그아웃" data-action="userLogout" data-logout-msg="확인 버튼을 클릭하시면 정상적으로 이 페이지에서 로그아웃 됩니다."><i class="fa fa-sign-out"></i></a> </span>
+		</div>
+	</div>
+</header>
+<!-- 좌측메뉴 패널 -->
+<aside id="left-panel">
+	<!-- User info -->
+	<div class="login-info">
+		<span> 
+			<a href="javascript:void(0);" style="cursor: default;"> 
+				<span><b>사용자</b> 님 안녕하세요.</span> 
+			</a>
+		</span>
+	</div>
+	<nav>
+		<ul>
+			<li> 
+				<a href="#" title="Dashboard" class="activeMenu start"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">시작</span></a>
+			</li>
+			<li>
+				<a href="#"  class="activeMenu"><i class="fa fa-lg fa-fw fa-th-large"></i> <span class="menu-item-parent">화장업무관리</span></a>
+				<ul>
+					<li>
+						<a href="#" class="activeMenu">화장예약</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">화장관리</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">통계관리</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">봉안업무관리</span></a>
+				<ul>
+					<li>
+						<a href="#" class="activeMenu">봉안관리</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">임시봉안</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">합동유골</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">봉안위패</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">통계관리</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#"  class="activeMenu">
+				<i class="fa fa-lg fa-fw fa-list-alt"></i> 
+				<span class="menu-item-parent">묘지업무관리</span>
+				</a>
+				<ul>
+					<li>
+						<a href="#" class="activeMenu">묘지관리</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">가매장관리</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">통계관리</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">수입업무관리</span></a>
+				<ul>
+					<li>
+						<a href="#"  class="activeMenu">대행</a>
+					</li>
+					<li>
+						<a href="#"  class="activeMenu">직영</a>
+					</li>
+				</ul>
+			</li> 
+		</ul>   
+	</nav>
+	<span class="minifyme" data-action="minifyMenu"> 
+		<i class="fa fa-arrow-circle-left hit"></i> 
+	</span>
+</aside>
+
+
+<div id="main" role="main">
+<div id="ribbon">
+	<span class="ribbon-button-alignment"> 
+		<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" 
+		data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> 경고! 위젯 및 설정된 화면 구성이 초기화 됩니다." data-html="true">
+			<i class="fa fa-refresh"></i>
+		</span> 
+	</span>
+	<!-- breadcrumb --> 
+	<ol class="breadcrumb">
+		<li>로컬스토리지제거</li>
+	</ol> 
+</div>
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-bar-chart-o fa-fw "></i> 
+				통계관리
+			</h1>
+		</div>
+	</div> 
+	<!-- widget grid -->
+	<section id="widget-grid" class="">
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="chart_1" data-widget-editbutton="false">
+				<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>화장예약 건수 현황 그래프</h2>
+				</header>
+
+				<!-- widget div--> 
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+						<div id="pie-chart2" class="chart"></div>
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+		</article>
+		<!-- WIDGET END -->
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="chart_2" data-widget-editbutton="false">
+				<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>예약경로 현황 그래프</h2>
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+
+						<div id="pie-chart" class="chart"></div>
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+		</article>
+		<!-- WIDGET END -->
+
+	</div>		
+	
+	<div class="row">
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="chart_4" data-widget-editbutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>일별 예약 그래프</h2>
+				</header>
+				<div>
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+						<div id="saleschart" class="chart"></div>
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+		</article>
+		</div>
+		
+		<div class="row">
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="chart_3" data-widget-editbutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+					<h2>장사관리통합정보시스템 실시간 서버 상태</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+					</div>
+					<!-- end widget edit box -->
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+						<div id="updating-chart" class="chart"></div>
+					</div>
+					<!-- end widget content -->
+				</div>
+				<!-- end widget div -->
+			</div>
+			<!-- end widget -->
+		</article>
+	</div>
+	</section>
+</div>
+</div>
+<!-- PAGE FOOTER -->
+<div class="page-footer">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+			<span class="txt-color-white">광양시립 영세공원 © 2015-2017</span>
+		</div> 
+		<div class="col-xs-6 col-sm-6 text-right hidden-xs">
+			<div class="txt-color-white inline-block">
+				<i class="txt-color-blueLight hidden-mobile">마지막 활동 &nbsp;&nbsp;<i class="fa fa-clock-o"></i> &nbsp;<strong id="clock">2분 전&nbsp;&nbsp;</strong> </i>
+				<div class="btn-group dropup">
+					<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
+						<i class="fa fa-link"></i> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu pull-right text-left">
+						<li class="divider"></li>
+						<li>  
+							<div class="padding-5">
+								<button class="btn btn-block btn-default" onclick="location.reload();">새로고침</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script src="../admin/js/app.min.js"></script>
+<script src="../admin/js/demo.min.js"></script>
+<script src="../admin/js/plugin/summernote/summernote.min.js"></script>
+<script src="../admin/js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="../admin/js/plugin/jqgrid/grid.locale-en.min.js"></script>
+  
+</html>

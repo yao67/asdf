@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- head -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content=""> 
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<!-- css -->
+<link rel="shortcut icon" href="../admin/img/favicon/test_favicon.ico" type="image/x-icon">
+<link rel="icon" href="../admin/img/favicon/test_favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/smartadmin-production.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/smartadmin-skins.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/demo.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../admin/css/user.css">
+<link rel="apple-touch-icon" href="../admin/img/splash/sptouch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../admin/img/splash/touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../admin/img/splash/touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../admin/img/splash/touch-icon-ipad-retina.png">
+<link rel="apple-touch-startup-image" href="../admin/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+<link rel="apple-touch-startup-image" href="../admin/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="../admin/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+<!--[if lt IE 9]>
+	<script src="../admin/js/ie/html5.js"></script>
+	<script src="../admin/js/ie/respond.min.js"></script>
+	<script src="../admin/js/ie/IE9.js"></script>
+<![endif]-->
+
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="../admin/js/plugin/pace/pace.min.js"></script>
+<script src="../admin/js/libs/jquery-2.0.2.min.js"></script>
+<script src="../admin/js/libs/jquery-ui-1.10.3.min.js"></script>
+<script src="../admin/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+<script src="../admin/js/bootstrap/bootstrap.min.js"></script>
+<script src="../admin/js/notification/SmartNotification.min.js"></script>
+<script src="../admin/js/smartwidgets/jarvis.widget.min.js"></script>
+<script src="../admin/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+<script src="../admin/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+<script src="../admin/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+<script src="../admin/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<script src="../admin/js/plugin/select2/select2.min.js"></script>
+<script src="../admin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+<script src="../admin/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+<script src="../admin/js/plugin/fastclick/fastclick.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.cust.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.resize.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+<script src="../admin/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="../admin/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="../admin/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.orderBar.min.js"></script>
+<script src="../admin/js/plugin/flot/jquery.flot.pie.min.js"></script>
+<script src="../admin/js/plugin/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script type="text/javascript">
+var Time = 0;
+
+var jqgrid_data = [{
+	id : "1",
+	id2 : "01회차",
+	val1: "예약확정",
+	val2: "대인",
+	val3: "황면옥",
+	val4: "301013-1154215"
+},{
+	id : "2",
+	id2 : "01회차",
+	val1: "예약확정",
+	val2: "대인",
+	val3: "조정래",
+	val4: "781013-1154215"
+},{
+	id : "3",
+	id2 : "01회차",
+	val1: "예약확정",
+	val2: "대인",
+	val3: "이근수",
+	val4: "541013-1154675"
+},{
+	id : "4",
+	id2 : "01회차",
+	val1: "예약취소",
+	val2: "대인",
+	val3: "손동인",
+	val4: "711013-1134515"
+},{
+	id : "5",
+	id2 : "01회차",
+	val1: "예약확정",
+	val2: "대인",
+	val3: "조석재",
+	val4: "315637-1154215"
+},{
+	id : "6",
+	id2 : "01회차", 
+	val1: "예약확정",
+	val2: "대인",
+	val3: "박병택",
+	val4: "501013-1154435"
+}];
+
+var jqgrid_data2 = [{
+	id : "1",
+	val1: "화장완료",
+	val4: "유골인도",
+	val2: "황면옥",
+	val3: "301013-1154215"
+},{
+	id : "2",
+	val1: "화장완료",
+	val4: "유골인도",
+	val2: "조정래",
+	val3: "781013-1154215"
+},{
+	id : "3",
+	val1: "화장완료",
+	val4: "유골인도",
+	val2: "이근수",
+	val3: "541013-1154675"
+},{
+	id : "4",
+	val1: "화장완료",
+	val4: "유골인도",
+	val2: "손동인",
+	val3: "711013-1134515"
+},{
+	id : "5",
+	val1: "화장완료",
+	val4: "유골인도",
+	val2: "조석재",
+	val3: "315637-1154215"
+},{
+	id : "6",
+	val1: "화장완료",
+	val4: "생장무연",
+	val2: "박병택",
+	val3: "501013-1154435"
+}];
+
+$(document).ready(function() {
+	pageSetUp();
+	runAllForms();
+	Timer();
+	jQuery("#jqgrid").jqGrid({
+		datatype : "local",  
+		height : 'auto',  
+		colNames : [ '순번', '예약구분','회차', '화장구분', '고인명', '사망자주민등록번호'],
+		colModel : [{
+			name : 'id',
+			index : 'id',
+			resizable    : true    ,
+			width:"80",
+			align : "center"
+		}, {
+			name : 'val1',
+			index : 'note', 
+			align : "center",
+			resizable    : true    ,
+			width:"100",
+			editable : true
+		},{
+			name : 'id2',
+			index : 'note',
+			resizable    : true    ,
+			width:"80",
+			align : "center"
+		},{
+			name : 'val2',
+			index : 'note',
+			align : "center",
+			resizable    : true    ,
+			editable : true
+		}, {
+			name : 'val3',
+			index : 'note',
+			align : "center",
+			resizable    : true    ,
+			editable : true
+		}, {
+			name : 'val4',
+			index : 'note',
+			align : "center",
+			resizable    : true    ,
+			editable : true
+		}],
+		
+		rowNum : 5,
+		rowList : [10, 20, 30],
+		pager : '#pjqgrid',
+		sortorder : "asc",
+		sortable  : true ,
+		forceFit : true,
+		shrinkToFit:true    
+	});
+	
+	jQuery("#jqgrid2").jqGrid({
+		data : jqgrid_data2,
+		datatype : "local",
+		height : 'auto',
+		colNames : [ '순번', '완료구분','고인명', '사망자주민등록번호','화장구분'],
+		colModel : [{
+			name : 'id',
+			index : 'id',
+			resizable    : true    ,
+			align : "center"
+		}, {
+			name : 'val1',
+			index : 'note', 
+			align : "center",
+			resizable    : true    ,
+			editable : true
+		},{
+			name : 'val2',
+			index : 'note',
+			resizable    : true    ,
+			align : "center"
+		},{
+			name  : 'val3',
+			index : 'note',
+			align : "center",
+			resizable    : true    ,
+			editable : true
+		}, {
+			name  : 'val4',
+			index : 'note',
+			align : "center",
+			resizable : true,
+			editable : true
+		}],
+		rowNum : 5,
+		rowList : [10, 20, 30],
+		pager : '#pjqgrid2',
+		sortorder : "asc",
+		autowidth : true,
+		sortable  : true
+	});
+	
+	$(window).on('resize.jqGrid', function() {
+		$("#jqgrid").jqGrid('setGridWidth', $("#gridbox").width() - 2);
+		$("#jqgrid2").jqGrid('setGridWidth', $("#gridbox2").width() - 2);
+	}); 
+
+	$(".print").on("click" ,function(){ 
+		window.print();
+	}); 
+	var flag = "N";
+	$(".search").on("click",function(){ 
+		if($(".datepicker").val() == ''){
+			$.smallBox({ 
+				title : "화장업무관리 - 예약일자조회", 
+				content : "예약일자를 선택해야 합니다.",
+				color : "#057722",
+				icon : "fa fa-calendar bounce",
+				timeout : 10000
+			});
+			return false;
+		}
+		cf_loading();
+		setTimeout(function(){
+			$("#jqgrid").jqGrid("clearGridData", true).trigger("reloadGrid");
+			jQuery("#jqgrid").jqGrid('addRowData','006',jqgrid_data,'after','002');
+			cf_loading_out();
+			$("#jqgrid>tbody>tr>td").on("click",function(){
+				$("#msgbox").css("display","none");
+				$("#form").css("display","block");
+				flag = "Y";
+			});
+		},1000);
+	});
+	
+	
+	$(".cancel").on("click",function(){
+		cf_loading();
+		setTimeout(function(){
+			location.reload();
+		},800);
+	});
+	
+	$.bigBox({
+		title : "장사관리통합정보시스템",
+		content : "새로운 이슈 사항이 있습니다 (2건)",
+		color : "#3276B1",
+		icon : "fa fa-bell swing animated",
+		number : "접속시작",
+		timeout : 10000
+	});
+	
+	
+	$(".save").on("click",function(){
+		if(flag == "Y"){
+			$.smallBox({
+				title : "화장업무관리",
+				content : "정상적으로 저장되었습니다.",
+				color : "#296191",
+				icon : "fa fa-check bounce",
+				timeout : 6000 
+			});
+		}else{
+			$.smallBox({ 
+				title : "화장업무관리",
+				content : "고인을 선택하세요.",
+				color : "#D72C38",
+				icon : "fa fa-times-circle bounce",
+				timeout : 8000
+			});
+			
+			
+		}
+		
+		
+	});
+	
+});
+
+
+function Timer() {
+	$("#clock").html(Time + "분 전&nbsp;&nbsp;");
+	Time++; 
+	setTimeout("Timer()", 60000);
+}
+function cf_loading(){ 
+	$(".Loading_Box").css("display","block"); 
+}  
+function cf_loading_out(){
+	$(".Loading_Box").fadeOut( "slow");
+}
+
+</script>
+<style>
+	#jqgrid tbody tr td {cursor: pointer;}
+	#jqgrid2 tbody tr td{cursor: pointer;} 
+</style> 
+</head>
+<div class="Loading_Box"> 
+	<div class="Loading_Bg"></div>  
+	<div class="Loading_MsgBox">  
+		<div class="MessageBoxMiddle"> 
+			<span class="MsgTitle">  
+				<br/><br/> 
+				<i class="fa fa-refresh txt-color-orangeDark fa-spin"></i> 
+				<span class="margin-l-20"></span>Loading...<span class="txt-color-orangeDark"><strong></strong></span>
+			</span>
+			<br/><br/>
+			<p class="pText">서버에서 데이터를 변경하고 있습니다. 적용 될 때 까지 잠시만 기다려주세요. (사양에 따라 다를 수 있으며, 최대 2~3분 이내에 완료 됩니다.) </p>
+		</div>
+	</div>
+</div> 
+<body class="desktop-detected menu-on-top pace-done smart-style-2">
+<header id="header">
+	<div id="logo-group">
+		<span id="logo" style="color:#FFF;"> 
+			<img src="../admin/img/logo-blue.png" alt="로고"> 
+		</span>
+	</div>
+	<div class="project-context hidden-xs">
+	</div>
+	<!-- 우측 아이콘 메뉴 정보 -->
+	<div class="pull-right">
+		<div id="hide-menu" class="btn-header pull-right">
+			<span> <a href="javascript:void(0);" data-action="toggleMenu" title="메뉴">
+			<i class="fa fa-reorder"></i></a> </span> 
+		</div>
+		<!-- 개인정보 메뉴  Top 메뉴 일때-->
+		<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+			<li class="">
+				<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
+					퀵 메뉴
+				</a>
+				<ul class="dropdown-menu pull-right">
+					<li>
+						<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>개</u>인정보</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i>  <u>전</u>체화면</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="javascript:void(0);" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout">
+							<i class="fa fa-sign-out fa-lg"></i> <u>로</u>그아웃
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<div id="logout" class="btn-header transparent pull-right">
+			<span> <a href="#" title="로그아웃" data-action="userLogout" data-logout-msg="확인 버튼을 클릭하시면 정상적으로 이 페이지에서 로그아웃 됩니다."><i class="fa fa-sign-out"></i></a> </span>
+		</div>
+	</div>
+</header>
+<!-- 좌측메뉴 패널 -->
+<aside id="left-panel">
+	<!-- User info -->
+	<div class="login-info">
+		<span> 
+			<a href="javascript:void(0);" style="cursor: default;"> 
+				<span><b>사용자</b> 님 안녕하세요.</span> 
+			</a>
+		</span>
+	</div>
+	<nav>
+		<ul>
+			<li> 
+				<a href="#" title="Dashboard" class="activeMenu start"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">시작</span></a>
+			</li>
+			<li>
+				<a href="#"  class="activeMenu"><i class="fa fa-lg fa-fw fa-th-large"></i> <span class="menu-item-parent">화장업무관리</span></a>
+				<ul>
+					<li>
+						<a href="#" class="activeMenu">화장예약</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">화장관리</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">통계관리</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">봉안업무관리</span></a>
+				<ul>
+					<li>
+						<a href="#" class="activeMenu">봉안관리</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">임시봉안</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">합동유골</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">봉안위패</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">통계관리</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#"  class="activeMenu">
+				<i class="fa fa-lg fa-fw fa-list-alt"></i> 
+				<span class="menu-item-parent">묘지업무관리</span>
+				</a>
+				<ul>
+					<li>
+						<a href="#" class="activeMenu">묘지관리</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">가매장관리</a>
+					</li>
+					<li>
+						<a href="#" class="activeMenu">통계관리</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">수입업무관리</span></a>
+				<ul>
+					<li>
+						<a href="#"  class="activeMenu">대행</a>
+					</li>
+					<li>
+						<a href="#"  class="activeMenu">직영</a>
+					</li>
+				</ul>
+			</li> 
+		</ul>   
+	</nav>
+	<span class="minifyme" data-action="minifyMenu"> 
+		<i class="fa fa-arrow-circle-left hit"></i> 
+	</span>
+</aside>
+
+
+<div id="main" role="main">
+<div id="ribbon">
+	<span class="ribbon-button-alignment"> 
+		<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" 
+		data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> 경고! 위젯 및 설정된 화면 구성이 초기화 됩니다." data-html="true">
+			<i class="fa fa-refresh"></i>
+		</span> 
+	</span>
+	<!-- breadcrumb --> 
+	<ol class="breadcrumb">
+		<li>로컬스토리지제거</li>
+	</ol> 
+</div>
+<div id="content">
+<div class="row">
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark">
+			<i class="fa fa-table fa-fw "></i> 
+				봉안업무관리
+			<span>> 
+				봉안관리
+			</span>
+		</h1>
+	</div>
+	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<ul id="sparks" class="">
+			<label class="input state-success"> 
+				<input type="text" name="request" placeholder="예약일자" class="datepicker" data-dateformat='yy-mm-dd' style="height:31px;padding-left:5px;">
+			</label>
+			<a class="btn btn-default search" href="javascript:void(0);"><i class="fa fa-search"></i> 조회</a>
+			<a class="btn btn-default save" href="javascript:void(0);"><i class="fa fa-save"></i> 저장</a>
+			<a class="btn btn-default cancel" href="javascript:void(0);"><i class="fa fa-trash-o"></i> 취소</a>
+			<a class="btn btn-default print" href="javascript:void(0);"><i class="fa fa-print"></i> 출력</a>
+		</ul>  
+	</div>
+</div>
+<section id="widget-grid" >
+	
+		<div class="row">
+		<article class="col-sm-12 col-md-12 col-lg-12"> 
+			<div class="jarviswidget jarviswidget-color-green" id="wid-id-3" data-widget-editbutton="false" >
+				<header>
+					<span class="widget-icon"> <i class="fa  fa-file-text"></i> </span>
+					<h2>봉안관리 신규 등록</h2> 
+				</header>
+				<div> 
+					<div class="jarviswidget-editbox">
+				</div>
+					
+					
+					
+<div class="widget-body no-padding">
+
+<form class="smart-form" id="form">
+<article class="col-sm-6 col-md-6 col-lg-6">
+
+<fieldset>
+	<section class="col col-md-6">
+		<label class="label">화장신고번호</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" name=""/>
+		</label>
+	</section>
+	
+	<section class="col col-md-6">
+		<label class="label">화장일</label>
+		<label class="input state-success"> 
+			<input type="text" name="" placeholder="날짜입력" class="datepicker" data-dateformat='yy-mm-dd'>
+			</label>
+	</section>
+	<section class="col col-md-6">
+		<label class="label">봉안설치일</label>
+		<label class="input state-success"> 
+			<input type="text" name="" placeholder="날짜입력" class="datepicker" data-dateformat='yy-mm-dd'>
+		</label>
+	</section>
+	
+	<section class="col col-md-6">
+		<label class="label">봉안기간 만료일</label>
+		<label class="input state-success"> 
+			<input type="text" name="" placeholder="날짜입력" class="datepicker" data-dateformat='yy-mm-dd'>
+			</label>
+	</section>
+	<section class="col col-md-12">
+	<!-- col-10 => col-12 수정필요 -->
+		<label class="label">봉안위치</label>
+		<div class="col-md-4">
+		<label class="select state-success">
+			<select>
+				<option value="0">1</option>
+				<option value="0">2</option>
+				<option value="0">3</option>
+			</select> <i></i></label>
+		</div>
+		<label class="col-md-2 label">&nbsp;안치실</label>
+		<div class="col-md-4">
+		<label class="select state-success">
+			<select>
+				<option value="0">1</option>
+				<option value="0">2</option>
+				<option value="0">3</option>
+			</select> <i></i></label>
+		</div>
+		<label class="col-md-2 label">&nbsp;호</label>
+	</section>
+	<section class="col col-md-6">
+	<label class="select state-success">
+		<select>
+			<option value="0">관내 대인 납골</option>
+			<option value="0">관내 대인 납골</option>
+			<option value="0">관내 대인 납골</option>
+		</select> <i></i></label>
+	</section>
+
+	
+	<section class="col col-md-12">
+		<label class="label">기타</label>
+		<label class="input textarea state-success"><textarea class="col col-12" rows="5"></textarea></label>
+	</section>
+	<section class="col col-md-6">
+		<label class="label">사용료</label>
+		<label class="input state-success">
+		<input type="text" class="input-sm"/>
+		</label>
+	</section>
+	<section class="col col-md-6">
+		<label class="label">관리비</label>
+		<label class="input state-success">
+		<input type="text" class="input-sm"/>
+		</label>
+	</section>
+	<section class="col col-12">
+		<div class="">
+			<label class="radio">
+				<input type="radio" name="radio-inline" checked="">
+				<i></i>일반</label>
+			<label class="radio">
+				<input type="radio" name="radio-inline">
+				<i></i>생활보호대상자</label>
+			<label class="radio">
+				<input type="radio" name="radio-inline">
+				<i></i>국가유공자</label>
+		</div>
+	</section>
+</fieldset>
+</article>
+
+<article class="col-sm-6 col-md-6 col-lg-6">
+<header>사망자 정보</header>
+<fieldset>
+	<section class="col col-10">
+		<label class="checkbox">
+			<input type="checkbox" name="" id="">
+			<i></i>무연고</label>
+	</section>
+
+	<section class="col col-md-6">
+		<label class="label">성명</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+
+	</section>
+	<section class="col col-md-6">
+		<label class="label">주민번호</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm"/>
+		</label>
+	</section>
+	<section class="col col-md-6">
+		<label class="label">사망장소</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+	</section>  
+	<section class="col col-md-6">
+		<label class="label">사인(병명)</label> 
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+	</section>
+	
+	<section class="col col-md-12">
+		<label class="label">사망일</label>
+		
+			<label class="input state-success col-md-6"> 
+			<input type="text" name="" placeholder="날짜입력" class="datepicker" data-dateformat='yy-mm-dd'>
+			</label>
+		
+		<div class="col col-md-6"><label class="checkbox">
+			<input type="checkbox" name="" id="">
+			<i></i>미상</label>
+		</div>
+		
+	</section> 
+	
+	<section class="col col-md-12">
+		<label class="label">주소</label>		 
+		<label class="input textarea state-success"><textarea class="col col-5" rows="2"></textarea>
+	</section>
+</fieldset>
+
+<header>사용자 정보</header>
+<fieldset>
+	
+	<section class="col col-6">
+		<label class="label">성명</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+
+	</section>
+	<section class="col col-6">
+		<label class="label">주민번호</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm"/>
+		</label>
+	</section>
+	<section class="col col-6">
+		<label class="label">사망자와의 관계</label>
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+	</section>  
+	<section class="col col-6">
+		<label class="label">전화번호</label> 
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+	</section>
+	<section class="col col-6">
+		<label class="label">핸드폰번호</label> 
+		<label class="input state-success">
+			<input type="text" class="input-sm" value="" />
+		</label>
+	</section>
+			<section class="col col-6"></section>
+	<section class="col col-10">
+		<label class="label">주소</label>		 
+		<label class="input textarea state-success"><textarea class="col col-5" rows="2"></textarea>
+	</section>
+</fieldset> 
+</article>
+<!-- 2차 아티클 끝 -->
+
+<!-- 밑단 헤더구분선 / 전송버튼 -->
+<header>&nbsp;</header>
+<footer class="widget-body-footer bg-color-white">
+	<fieldset>	
+	<button type="submit" class="btn btn-primary">
+		입력완료
+	</button>
+	<button type="button" class="btn btn-default" onclick="window.history.back();">
+		취소
+	</button>
+	</fieldset>
+</footer>
+</article>
+
+</form>
+
+
+</div>
+
+
+
+
+
+				</div>
+			</div>
+
+		
+		<!-- WIDGET END -->
+	</div>
+	<!-- <div class="row">
+	<article id="gridbox2" class="col-sm-6 col-md-6 col-lg-6"> 
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-editbutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa  fa-search"></i> </span>
+					<h2>접수완료명단</h2> 
+				</header>
+				<div> 
+					<div class="jarviswidget-editbox">
+					</div>
+					<div class="widget-body no-padding">
+						<table id="jqgrid2"></table>
+						<div id="pjqgrid2"></div>
+					</div>
+				</div>
+			</div>
+		</article>
+	</div> -->
+	<!-- end row -->
+</section>
+
+</div>
+</div>
+<!-- PAGE FOOTER -->
+<div class="page-footer">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+			<span class="txt-color-white">광양시립 영세공원 © 2015-2017</span>
+		</div> 
+					<div class="col-xs-6 col-sm-6 text-right hidden-xs">
+							<div class="txt-color-white inline-block">
+								<i class="txt-color-blueLight hidden-mobile">마지막 활동 &nbsp;&nbsp;<i class="fa fa-clock-o"></i> &nbsp;<strong id="clock">2분 전&nbsp;&nbsp;</strong> </i>
+									<div class="btn-group dropup">
+											<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
+						<i class="fa fa-link"></i> <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu pull-right text-left">
+						<li class="divider"></li>
+						<li>  
+											<div class="padding-5">
+								<button class="btn btn-block btn-default" onclick="location.reload();">새로고침</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script src="../admin/js/app.min.js"></script>
+<script src="../admin/js/demo.min.js"></script>
+
+<script src="../admin/js/plugin/summernote/summernote.min.js"></script>
+<script src="../admin/js/plugin/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="../admin/js/plugin/jqgrid/grid.locale-en.min.js"></script>
+  
+</html>
